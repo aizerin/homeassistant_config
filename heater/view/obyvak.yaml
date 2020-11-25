@@ -1,0 +1,22 @@
+badges: []
+cards:
+  - cards:
+      - entity: climate.obyvak_101_0_102
+        type: thermostat
+      - entities:
+          - entity: input_number.obyvak_low
+            name: Low temperature
+          - type: section
+            label: "High heat workday"
+          - entity: input_datetime.obyvak_work_high_start
+          - entity: input_number.obyvak_work_high
+          - entity: input_datetime.obyvak_work_high_end
+          - type: section
+            label: "High heat weekday"
+          - entity: input_datetime.obyvak_week_high_start
+          - entity: input_number.obyvak_week_high
+          - entity: input_datetime.obyvak_week_high_end
+        type: entities
+    type: vertical-stack
+path: obyvak
+title: obyvak

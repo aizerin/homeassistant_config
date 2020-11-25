@@ -1,0 +1,22 @@
+# START COPY PASTE
+obyvak_low:
+  name: obyvak_low
+  min: 15
+  max: 25
+  step: 0.5
+  icon: mdi:home-thermometer-outline
+
+obyvak_work_high:
+  name: obyvak_work_high
+  min: 15
+  max: 25
+  step: 0.5
+  icon: mdi:home-thermometer-outline
+
+obyvak_week_high:
+  name: obyvak_week_high
+  min: 15
+  max: 25
+  step: 0.5
+  icon: mdi:home-thermometer-outline
+#  END COPY PASTE

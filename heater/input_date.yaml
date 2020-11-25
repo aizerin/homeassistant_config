@@ -1,0 +1,21 @@
+# START COPY PASTE
+obyvak_work_high_start:
+  name: obyvak_work_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+obyvak_work_high_end:
+  name: obyvak_work_high_end
+  has_time: true
+  icon: mdi:clock-start
+
+obyvak_week_high_start:
+  name: obyvak_week_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+obyvak_week_high_end:
+  name: obyvak_week_high_end
+  has_time: true
+  icon: mdi:clock-start
+#  END COPY PASTE
