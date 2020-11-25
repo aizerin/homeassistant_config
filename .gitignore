@@ -1,0 +1,6 @@
+deps
+tts
+secrets.yaml
+home-assistant*
+.storage
+.HA_VERSION
