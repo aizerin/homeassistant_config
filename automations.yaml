@@ -1,14 +1,46 @@
+# START COPY PASTE obyvak
 - alias: obyvak_trigger
   trigger:
     - platform: state
       entity_id: sensor.obyvak_temperature
     - platform: time_pattern
       # Jen pro obnovu teploty, kvuli HDO
-      minutes: 1
+      minutes: "/15"
   action:
     - service: climate.set_temperature
       data_template:
         entity_id: climate.obyvak_101_0_102
         temperature: >-
           {{states('sensor.obyvak_temperature') }}
-  id: 47141d0a7f8d420885cd15bc3cbb5888
+# END COPY PASTE obyvak
+# START COPY PASTE pokoj1
+- alias: pokoj1_trigger
+  trigger:
+    - platform: state
+      entity_id: sensor.pokoj1_temperature
+    - platform: time_pattern
+      # Jen pro obnovu teploty, kvuli HDO
+      minutes: "/15"
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.pokoj1_111_0_112
+        temperature: >-
+          {{states('sensor.pokoj1_temperature') }}
+# END COPY PASTE pokoj1
+# START COPY PASTE pokoj2
+- alias: pokoj2_trigger
+  trigger:
+    - platform: state
+      entity_id: sensor.pokoj2_temperature
+    - platform: time_pattern
+      # Jen pro obnovu teploty, kvuli HDO
+      minutes: "/15"
+  action:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.pokoj2_106_0_107
+        temperature: >-
+          {{states('sensor.pokoj2_temperature') }}
+
+# END COPY PASTE pokoj2

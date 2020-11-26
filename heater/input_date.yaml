@@ -1,4 +1,4 @@
-# START COPY PASTE
+# START COPY PASTE obyvak
 obyvak_work_high_start:
   name: obyvak_work_high_start
   has_time: true
@@ -18,4 +18,46 @@ obyvak_week_high_end:
   name: obyvak_week_high_end
   has_time: true
   icon: mdi:clock-start
-#  END COPY PASTE
+# END COPY PASTE obyvak
+# START COPY PASTE pokoj1
+pokoj1_work_high_start:
+  name: pokoj1_work_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj1_work_high_end:
+  name: pokoj1_work_high_end
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj1_week_high_start:
+  name: pokoj1_week_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj1_week_high_end:
+  name: pokoj1_week_high_end
+  has_time: true
+  icon: mdi:clock-start
+# END COPY PASTE pokoj1
+# START COPY PASTE pokoj2
+pokoj2_work_high_start:
+  name: pokoj2_work_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj2_work_high_end:
+  name: pokoj2_work_high_end
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj2_week_high_start:
+  name: pokoj2_week_high_start
+  has_time: true
+  icon: mdi:clock-start
+
+pokoj2_week_high_end:
+  name: pokoj2_week_high_end
+  has_time: true
+  icon: mdi:clock-start
+# END COPY PASTE pokoj2

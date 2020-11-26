@@ -1,0 +1,22 @@
+badges: []
+cards:
+  - cards:
+      - entity: climate.pokoj1_111_0_112
+        type: thermostat
+      - entities:
+          - entity: input_number.pokoj1_low
+            name: Low temperature
+          - type: section
+            label: "High heat workday"
+          - entity: input_datetime.pokoj1_work_high_start
+          - entity: input_number.pokoj1_work_high
+          - entity: input_datetime.pokoj1_work_high_end
+          - type: section
+            label: "High heat weekday"
+          - entity: input_datetime.pokoj1_week_high_start
+          - entity: input_number.pokoj1_week_high
+          - entity: input_datetime.pokoj1_week_high_end
+        type: entities
+    type: vertical-stack
+path: pokoj1
+title: pokoj1
