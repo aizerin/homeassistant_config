@@ -12,6 +12,9 @@
         entity_id: climate.obyvak_101_0_102
         temperature: >-
           {{states('sensor.obyvak_temperature') }}
+    - service: homeassistant.update_entity
+      entity_id:
+        - climate.obyvak_101_0_102
 # END COPY PASTE obyvak
 # START COPY PASTE pokoj1
 - alias: pokoj1_trigger
@@ -27,6 +30,9 @@
         entity_id: climate.pokoj1_111_0_112
         temperature: >-
           {{states('sensor.pokoj1_temperature') }}
+    - service: homeassistant.update_entity
+      entity_id:
+        - climate.pokoj1_111_0_112
 # END COPY PASTE pokoj1
 # START COPY PASTE pokoj2
 - alias: pokoj2_trigger
@@ -42,5 +48,7 @@
         entity_id: climate.pokoj2_106_0_107
         temperature: >-
           {{states('sensor.pokoj2_temperature') }}
-
+    - service: homeassistant.update_entity
+      entity_id:
+        - climate.pokoj2_106_0_107
 # END COPY PASTE pokoj2
