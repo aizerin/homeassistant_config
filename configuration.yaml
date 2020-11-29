@@ -20,8 +20,8 @@ binary_sensor:
   - platform: workday
     country: "CZ"
     name: "workday_today"
-    workdays: [mon, tue, wed, thu, fri, sat]
-    excludes: [sun, holiday]
+    workdays: [mon, tue, wed, thu, fri]
+    excludes: [sat, sun, holiday]
 
 input_number: !include heater/input_number.yaml
 input_datetime: !include heater/input_date.yaml
@@ -47,14 +47,14 @@ sensor:
         value_template: >- # ok 141119
           {% set t = states('sensor.time') %}
           {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if now().weekday() in (0,1,2,3,4) %}
-              {% if states('input_datetime.obyvak_work_high_start') <= t <= states('input_datetime.obyvak_work_high_end') %} {{ states('input_number.obyvak_work_high') }}
-              {% else %} {{ states('input_number.obyvak_low') }}
-              {% endif %}
-            {% else %}
-              {% if states('input_datetime.obyvak_week_high_start') <= t <= states('input_datetime.obyvak_week_high_end') %} {{ states('input_number.obyvak_week_high') }}
-              {% else %} {{ states('input_number.obyvak_low') }}
-              {% endif %}
+            {% if states('input_datetime.obyvak_work_high_start') <= t <= states('input_datetime.obyvak_work_high_end') %} {{ states('input_number.obyvak_work_high') }}
+            {% else %} {{ states('input_number.obyvak_low') }}
+            {% endif %}
+          {% else %}
+            {% if states('input_datetime.obyvak_week_high_start') <= t <= states('input_datetime.obyvak_week_high_end') %} 
+              {{ states('input_number.obyvak_week_high') }}
+            {% else %} 
+              {{ states('input_number.obyvak_low') }}
             {% endif %}
           {% endif %}
   # END COPY PASTE obyval
@@ -65,15 +65,17 @@ sensor:
         value_template: >- # ok 141119
           {% set t = states('sensor.time') %}
           {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if now().weekday() in (0,1,2,3,4) %}
-              {% if states('input_datetime.pokoj1_work_high_start') <= t <= states('input_datetime.pokoj1_work_high_end') %} {{ states('input_number.pokoj1_work_high') }}
-              {% else %} {{ states('input_number.pokoj1_low') }}
-              {% endif %}
+            {% if states('input_datetime.pokoj1_work_high_start') <= t <= states('input_datetime.pokoj1_work_high_end') %} 
+              {{ states('input_number.pokoj1_work_high') }}
             {% else %}
-              {% if states('input_datetime.pokoj1_week_high_start') <= t <= states('input_datetime.pokoj1_week_high_end') %} {{ states('input_number.pokoj1_week_high') }}
-              {% else %} {{ states('input_number.pokoj1_low') }}
-              {% endif %}
+              {{ states('input_number.pokoj1_low') }}
             {% endif %}
+            {% else %}
+              {% if states('input_datetime.pokoj1_week_high_start') <= t <= states('input_datetime.pokoj1_week_high_end') %}
+               {{ states('input_number.pokoj1_week_high') }}
+              {% else %}
+               {{ states('input_number.pokoj1_low') }}
+              {% endif %}
           {% endif %}
     # END COPY PASTE pokoj1
     # START COPY PASTE pokoj2
@@ -83,15 +85,17 @@ sensor:
         value_template: >- # ok 141119
           {% set t = states('sensor.time') %}
           {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if now().weekday() in (0,1,2,3,4) %}
-              {% if states('input_datetime.pokoj2_work_high_start') <= t <= states('input_datetime.pokoj2_work_high_end') %} {{ states('input_number.pokoj2_work_high') }}
-              {% else %} {{ states('input_number.pokoj2_low') }}
-              {% endif %}
+            {% if states('input_datetime.pokoj2_work_high_start') <= t <= states('input_datetime.pokoj2_work_high_end') %} 
+              {{ states('input_number.pokoj2_work_high') }}
             {% else %}
-              {% if states('input_datetime.pokoj2_week_high_start') <= t <= states('input_datetime.pokoj2_week_high_end') %} {{ states('input_number.pokoj2_week_high') }}
-              {% else %} {{ states('input_number.pokoj2_low') }}
-              {% endif %}
+              {{ states('input_number.pokoj2_low') }}
             {% endif %}
+            {% else %}
+              {% if states('input_datetime.pokoj2_week_high_start') <= t <= states('input_datetime.pokoj2_week_high_end') %}
+                {{ states('input_number.pokoj2_week_high') }}
+              {% else %}
+                {{ states('input_number.pokoj2_low') }}
+              {% endif %}
           {% endif %}
     # START COPY PASTE pokoj2
 
