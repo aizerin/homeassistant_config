@@ -1,17 +1,17 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-homeassistant:
-  customize: !include customize.yaml
+ios:
 
 # Text to speech
 tts:
   - platform: google_translate
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+automation: !include_dir_merge_list automations/
+input_number: !include_dir_merge_named input-numbers/
+input_datetime: !include_dir_merge_named input-dates/
+sensor: !include_dir_merge_list sensors/
+binary_sensor: !include_dir_merge_list binary-sensors/
 
 fibaro:
   gateways:
@@ -19,96 +19,18 @@ fibaro:
       username: !secret fibaro_user
       password: !secret fibaro_password
 
-binary_sensor:
-  - platform: workday
-    country: "CZ"
-    name: "workday_today"
-    workdays: [mon, tue, wed, thu, fri]
-    excludes: [sat, sun, holiday]
-
-input_number: !include heater/input_number.yaml
-input_datetime: !include heater/input_date.yaml
-
-#-----------------------------sensors----------------------------------------------------------------
-#weather sensor
-sensor:
-  #time sensor
-  - platform: time_date
-    display_options:
-      - "time"
-      - "date"
-      - "date_time"
-      - "date_time_iso"
-      - "time_date"
-      - "time_utc"
-      - "beat"
-
-  # START COPY PASTE obyvak
-  - platform: template
-    sensors:
-      obyvak_temperature:
-        value_template: >- # ok 141119
-          {% set t = states('sensor.time') %}
-          {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if states('input_datetime.obyvak_work_high_start') <= t <= states('input_datetime.obyvak_work_high_end') %} {{ states('input_number.obyvak_work_high') }}
-            {% else %} {{ states('input_number.obyvak_low') }}
-            {% endif %}
-          {% else %}
-            {% if states('input_datetime.obyvak_week_high_start') <= t <= states('input_datetime.obyvak_week_high_end') %} 
-              {{ states('input_number.obyvak_week_high') }}
-            {% else %} 
-              {{ states('input_number.obyvak_low') }}
-            {% endif %}
-          {% endif %}
-  # END COPY PASTE obyval
-  # START COPY PASTE pokoj1
-  - platform: template
-    sensors:
-      pokoj1_temperature:
-        value_template: >- # ok 141119
-          {% set t = states('sensor.time') %}
-          {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if states('input_datetime.pokoj1_work_high_start') <= t <= states('input_datetime.pokoj1_work_high_end') %} 
-              {{ states('input_number.pokoj1_work_high') }}
-            {% else %}
-              {{ states('input_number.pokoj1_low') }}
-            {% endif %}
-            {% else %}
-              {% if states('input_datetime.pokoj1_week_high_start') <= t <= states('input_datetime.pokoj1_week_high_end') %}
-               {{ states('input_number.pokoj1_week_high') }}
-              {% else %}
-               {{ states('input_number.pokoj1_low') }}
-              {% endif %}
-          {% endif %}
-    # END COPY PASTE pokoj1
-    # START COPY PASTE pokoj2
-  - platform: template
-    sensors:
-      pokoj2_temperature:
-        value_template: >- # ok 141119
-          {% set t = states('sensor.time') %}
-          {% if is_state('binary_sensor.workday_today', 'on') %}
-            {% if states('input_datetime.pokoj2_work_high_start') <= t <= states('input_datetime.pokoj2_work_high_end') %} 
-              {{ states('input_number.pokoj2_work_high') }}
-            {% else %}
-              {{ states('input_number.pokoj2_low') }}
-            {% endif %}
-            {% else %}
-              {% if states('input_datetime.pokoj2_week_high_start') <= t <= states('input_datetime.pokoj2_week_high_end') %}
-                {{ states('input_number.pokoj2_week_high') }}
-              {% else %}
-                {{ states('input_number.pokoj2_low') }}
-              {% endif %}
-          {% endif %}
-    # START COPY PASTE pokoj2
-
 lovelace:
   mode: storage
-  # Add yaml dashboards
   dashboards:
-    lovelace-yaml:
+    heater-dashboard:
       mode: yaml
       title: Heating panel
       icon: mdi:script
       show_in_sidebar: true
-      filename: lovelace.yaml
+      filename: dashboards/heater.yaml
+    growbox-dashboard:
+      mode: yaml
+      title: Growbox
+      icon: mdi:script
+      show_in_sidebar: true
+      filename: dashboards/growbox.yaml

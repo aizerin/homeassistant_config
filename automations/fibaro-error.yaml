@@ -1,0 +1,18 @@
+- alias: "Restart if Fibaro not OK"
+  trigger:
+    - platform: state
+      entity_id: sensor.fibaro_error
+    - platform: time_pattern
+      minutes: "/5"
+  condition:
+    - condition: state
+      entity_id: sensor.fibaro_error
+      state: "Y"
+  action:
+    - delay:
+        seconds: 300
+    - service: notify.mobile_app_lukass_iphone
+      data:
+        message: "Restart - fibaro error"
+        title: "Home Assistant issue"
+    - service: homeassistant.restart

@@ -1,0 +1,5 @@
+- platform: workday
+  country: "CZ"
+  name: "workday_today"
+  workdays: [mon, tue, wed, thu, fri]
+  excludes: [sat, sun, holiday]

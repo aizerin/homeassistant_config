@@ -1,0 +1,5 @@
+title: Heater
+views:
+  - !include heater-views/obyvak.yaml
+  - !include heater-views/pokoj1.yaml
+  - !include heater-views/pokoj2.yaml

@@ -1,5 +1,0 @@
-title: Home
-views:
-  - !include heater/view/obyvak.yaml
-  - !include heater/view/pokoj1.yaml
-  - !include heater/view/pokoj2.yaml

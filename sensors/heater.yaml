@@ -1,0 +1,68 @@
+#time sensor
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "date_time"
+    - "date_time_iso"
+    - "time_date"
+    - "time_utc"
+    - "beat"
+# START COPY PASTE obyvak
+- platform: template
+  sensors:
+    obyvak_temperature:
+      value_template: >- # ok 141119
+        {% set t = states('sensor.time') %}
+        {% if is_state('binary_sensor.workday_today', 'on') %}
+          {% if states('input_datetime.obyvak_work_high_start') <= t <= states('input_datetime.obyvak_work_high_end') %} {{ states('input_number.obyvak_work_high') }}
+          {% else %} {{ states('input_number.obyvak_low') }}
+          {% endif %}
+        {% else %}
+          {% if states('input_datetime.obyvak_week_high_start') <= t <= states('input_datetime.obyvak_week_high_end') %} 
+            {{ states('input_number.obyvak_week_high') }}
+          {% else %} 
+            {{ states('input_number.obyvak_low') }}
+          {% endif %}
+        {% endif %}
+# END COPY PASTE obyval
+# START COPY PASTE pokoj1
+- platform: template
+  sensors:
+    pokoj1_temperature:
+      value_template: >- # ok 141119
+        {% set t = states('sensor.time') %}
+        {% if is_state('binary_sensor.workday_today', 'on') %}
+          {% if states('input_datetime.pokoj1_work_high_start') <= t <= states('input_datetime.pokoj1_work_high_end') %} 
+            {{ states('input_number.pokoj1_work_high') }}
+          {% else %}
+            {{ states('input_number.pokoj1_low') }}
+          {% endif %}
+          {% else %}
+            {% if states('input_datetime.pokoj1_week_high_start') <= t <= states('input_datetime.pokoj1_week_high_end') %}
+             {{ states('input_number.pokoj1_week_high') }}
+            {% else %}
+             {{ states('input_number.pokoj1_low') }}
+            {% endif %}
+        {% endif %}
+  # END COPY PASTE pokoj1
+  # START COPY PASTE pokoj2
+- platform: template
+  sensors:
+    pokoj2_temperature:
+      value_template: >- # ok 141119
+        {% set t = states('sensor.time') %}
+        {% if is_state('binary_sensor.workday_today', 'on') %}
+          {% if states('input_datetime.pokoj2_work_high_start') <= t <= states('input_datetime.pokoj2_work_high_end') %} 
+            {{ states('input_number.pokoj2_work_high') }}
+          {% else %}
+            {{ states('input_number.pokoj2_low') }}
+          {% endif %}
+          {% else %}
+            {% if states('input_datetime.pokoj2_week_high_start') <= t <= states('input_datetime.pokoj2_week_high_end') %}
+              {{ states('input_number.pokoj2_week_high') }}
+            {% else %}
+              {{ states('input_number.pokoj2_low') }}
+            {% endif %}
+        {% endif %}
+  # START COPY PASTE pokoj2

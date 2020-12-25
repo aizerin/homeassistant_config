@@ -1,0 +1,30 @@
+- id: '1608817356789'
+  alias: Growbox mqtt publish
+  trigger:
+    - platform: state
+      entity_id: input_number.moisture_level
+    - platform: state
+      entity_id: input_number.temperature
+    - platform: state
+      entity_id: input_number.fan_duration_m
+    - platform: state
+      entity_id: input_number.fan_interval_h
+    - platform: state
+      entity_id: input_number.light_duration_h
+    - platform: state
+      entity_id: input_number.water_duration_s
+  condition: [ ]
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: omfg
+        retain: true
+        payload_template: '{
+        "moisture_level":"{{ states(''input_number.moisture_level'') }}",
+        "temperature":"{{ states(''input_number.temperature'') }}",
+        "fan_duration_m":"{{ states(''input_number.fan_duration_m'') }}",
+        "fan_interval_h":"{{ states(''input_number.fan_interval_h'') }}",
+        "light_duration_h":"{{ states(''input_number.light_duration_h'') }}",
+        "water_duration_s":"{{ states(''input_number.water_duration_s'') }}"
+        }'
+  mode: single

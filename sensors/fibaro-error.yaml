@@ -1,0 +1,9 @@
+- platform: template
+  sensors:
+    fibaro_error:
+      value_template: >-
+        {% if 'fibaro' in state_attr('persistent_notification.invalid_config', 'message') %}
+        Y
+        {% else %}
+        N
+        {% endif %}

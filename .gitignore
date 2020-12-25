@@ -4,3 +4,5 @@ secrets.yaml
 home-assistant*
 .storage
 .HA_VERSION
+.cloud
+blueprints

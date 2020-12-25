@@ -1,0 +1,19 @@
+title: Growbox
+views:
+  - badges: []
+    cards:
+      - cards:
+          - entities:
+              - entity: input_number.moisture_level
+              - entity: input_number.temperature
+              - entity: input_number.fan_duration_m
+              - entity: input_number.fan_interval_h
+              - entity: input_number.light_duration_h
+              - entity: input_number.water_duration_s
+              - entity: sensor.growbox_temperature
+              - entity: sensor.growbox_humidity
+              - entity: sensor.growbox_test
+            type: entities
+        type: vertical-stack
+    path: growbox
+    title: Growbox
