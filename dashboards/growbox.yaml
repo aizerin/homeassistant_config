@@ -12,7 +12,7 @@ views:
               - entity: input_number.water_duration_s
               - entity: sensor.growbox_temperature
               - entity: sensor.growbox_humidity
-              - entity: sensor.growbox_growbox_water_level
+              - entity: sensor.growbox_water_level
               - entity: sensor.growbox_moisture
               - entity: switch.growbox_light
               - entity: switch.growbox_heater

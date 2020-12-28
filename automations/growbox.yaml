@@ -31,12 +31,11 @@
 - alias: "Growbox turn on fan interval"
   trigger:
     - platform: time_pattern
-      minutes: "/1"
+      hours: "/6"
   action:
     - service: switch.turn_on
       entity_id: switch.growbox_fan
-    # - delay: "{{ states('input_number.fan_duration_m') | multiply(60) | int }}"
-    - delay: "{{ states('input_number.fan_duration_m') | int }}"
+    - delay: "{{ states('input_number.fan_duration_m') | multiply(60) | int }}"
     - service: switch.turn_off
       entity_id: switch.growbox_fan
 - alias: "Growbox turn on lights"
@@ -57,8 +56,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.growbox_temperature
-      above: 21
-      for: "00:00:10"
+      above: 21.5
   action:
     - service: switch.off
       entity_id: switch.growbox_heater
