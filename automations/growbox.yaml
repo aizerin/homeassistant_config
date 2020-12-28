@@ -58,7 +58,7 @@
       entity_id: sensor.growbox_temperature
       above: 21.5
   action:
-    - service: switch.off
+    - service: switch.turn_off
       entity_id: switch.growbox_heater
 - alias: "Growbox turn on heater"
   trigger:
