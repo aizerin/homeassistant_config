@@ -13,6 +13,7 @@ views:
               - entity: sensor.growbox_temperature
               - entity: sensor.growbox_humidity
               - entity: sensor.growbox_test
+              - entity: switch.growbox_light
             type: entities
         type: vertical-stack
     path: growbox

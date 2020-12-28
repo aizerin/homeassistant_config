@@ -12,6 +12,7 @@ input_number: !include_dir_merge_named input-numbers/
 input_datetime: !include_dir_merge_named input-dates/
 sensor: !include_dir_merge_list sensors/
 binary_sensor: !include_dir_merge_list binary-sensors/
+switch: !include_dir_merge_list switches/
 
 fibaro:
   gateways:

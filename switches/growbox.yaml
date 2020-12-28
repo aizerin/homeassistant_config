@@ -1,0 +1,6 @@
+- platform: mqtt
+  unique_id: growbox_light
+  name: "Growbox Light"
+  state_topic: "growbox/relay/light"
+  command_topic: "growbox/relay/light/set"
+  retain: true
