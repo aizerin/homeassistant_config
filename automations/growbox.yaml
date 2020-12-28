@@ -72,7 +72,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.growbox_water_level
-      below: 1
+      above: 0
   action:
     - service: notify.mobile_app_lukass_iphone
       data:
