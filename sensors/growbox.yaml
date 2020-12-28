@@ -1,15 +1,18 @@
 - platform: mqtt
-  name: "growbox_test"
-  state_topic: "haha"
-  json_attributes_topic: "haha"
-  json_attributes_template: "{{ value_json | tojson }}"
+  name: "growbox_water_level"
+  state_topic: "growbox/data"
+  value_template: "{{ value_json.waterLevel }}"
 - platform: mqtt
   name: "growbox_temperature"
-  state_topic: "haha"
+  state_topic: "growbox/data"
   unit_of_measurement: "°C"
   value_template: "{{ value_json.temperature }}"
 - platform: mqtt
   name: "growbox_humidity"
-  state_topic: "haha"
+  state_topic: "growbox/data"
   unit_of_measurement: "%"
   value_template: "{{ value_json.humidity }}"
+- platform: mqtt
+  name: "growbox_moisture"
+  state_topic: "growbox/data"
+  value_template: "{{ value_json.moisture }}"

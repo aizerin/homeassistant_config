@@ -28,12 +28,10 @@
         "water_duration_s":"{{ states(''input_number.water_duration_s'') }}"
         }'
   mode: single
-- alias: 'Turn on fan'
+- alias: 'Growbox turn on fan interval'
   trigger:
     - platform: time_pattern
-      hours: 0
       minutes: '/1'
-      seconds: 0
   action:
     - service: switch.turn_on
       entity_id: switch.growbox_fan
@@ -41,3 +39,44 @@
     - delay: "{{ states('input_number.fan_duration_m') | int }}"
     - service: switch.turn_off
       entity_id: switch.growbox_fan
+- alias: 'Growbox turn on lights'
+  trigger:
+    - platform: time
+      at: "6:00:00"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.growbox_light
+- alias: 'Growbox turn off lights'
+  trigger:
+    - platform: time
+      at: "22:00:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.growbox_light
+- alias: 'Growbox turn off heater'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.growbox_temperature
+      above: 21
+      for: "00:00:10"
+  action:
+    - service: switch.off
+      entity_id: switch.growbox_heater
+- alias: 'Growbox turn on heater'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.growbox_temperature
+      below: 21
+  action:
+    - service: switch.turn_on
+      entity_id: switch.growbox_heater
+- alias: 'Notify water level'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.growbox_water_level
+      below: 1
+  action:
+    - service: notify.mobile_app_lukass_iphone
+      data:
+        message: "Growbox"
+        title: "water level low pico"
