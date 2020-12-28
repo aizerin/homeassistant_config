@@ -28,3 +28,16 @@
         "water_duration_s":"{{ states(''input_number.water_duration_s'') }}"
         }'
   mode: single
+- alias: 'Turn on fan'
+  trigger:
+    - platform: time_pattern
+      hours: 0
+      minutes: '/1'
+      seconds: 0
+  action:
+    - service: switch.turn_on
+      entity_id: switch.growbox_fan
+    # - delay: "{{ states('input_number.fan_duration_m') | multiply(60) | int }}"
+    - delay: "{{ states('input_number.fan_duration_m') | int }}"
+    - service: switch.turn_off
+      entity_id: switch.growbox_fan
