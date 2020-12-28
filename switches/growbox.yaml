@@ -1,24 +1,20 @@
 - platform: mqtt
-  unique_id: growbox_light
-  name: "Light"
+  name: "growbox_light"
   state_topic: "growbox/relay/light"
   command_topic: "growbox/relay/light/set"
   retain: true
 - platform: mqtt
-  unique_id: growbox_heater
-  name: "Heater"
+  name: "growbox_heater"
   state_topic: "growbox/relay/heater"
   command_topic: "growbox/relay/heater/set"
   retain: true
 - platform: mqtt
-  unique_id: growbox_fan
-  name: "Fan"
+  name: "growbox_fan"
   state_topic: "growbox/relay/fan"
   command_topic: "growbox/relay/fan/set"
   retain: true
 - platform: mqtt
-  unique_id: growbox_water
-  name: "Water"
+  name: "growbox_water"
   state_topic: "growbox/relay/water"
   command_topic: "growbox/relay/water/set"
   retain: true
