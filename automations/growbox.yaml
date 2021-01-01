@@ -40,15 +40,23 @@
       entity_id: switch.growbox_fan
 - alias: "Growbox turn on lights"
   trigger:
-    - platform: time
-      at: "6:00:00"
+    - platform: time_pattern
+      minutes: "/15"
+  condition:
+    condition: time
+    after: "6:00:00"
+    before: "22:00:00"
   action:
     - service: switch.turn_on
       entity_id: switch.growbox_light
 - alias: "Growbox turn off lights"
   trigger:
-    - platform: time
-      at: "22:00:00"
+    - platform: time_pattern
+      minutes: "/15"
+  condition:
+    condition: time
+    after: "22:00:00"
+    before: "6:00:00"
   action:
     - service: switch.turn_off
       entity_id: switch.growbox_light
