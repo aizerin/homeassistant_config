@@ -2,7 +2,7 @@
   sensors:
     fibaro_error:
       value_template: >-
-        {% if 'fibaro' in state_attr('persistent_notification.invalid_config', 'message') %}
+        {% if state_attr('persistent_notification.invalid_config', 'message') != None and 'fibaro' in state_attr('persistent_notification.invalid_config', 'message') %}
         Y
         {% else %}
         N
