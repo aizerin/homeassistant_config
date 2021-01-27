@@ -1,6 +1,9 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+homeassistant:
+  customize: !include customize.yaml
+
 ios:
 
 # Text to speech
@@ -19,6 +22,11 @@ fibaro:
     - url: http://192.168.0.100/api/
       username: !secret fibaro_user
       password: !secret fibaro_password
+      device_config:
+        light.unknown_116_1_119:
+          white_value: true
+          color: true
+          dimming: true
 
 lovelace:
   mode: storage
