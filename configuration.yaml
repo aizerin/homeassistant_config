@@ -4,6 +4,13 @@ default_config:
 homeassistant:
   customize: !include customize.yaml
 
+# logger:
+#   default: info
+#   logs:
+#     fiblay: debug
+#     homeassistant.components.fibaro: debug
+#     custom_components.fibaro: debug
+
 ios:
 
 # Text to speech
@@ -23,10 +30,8 @@ fibaro:
       username: !secret fibaro_user
       password: !secret fibaro_password
       device_config:
-        light.unknown_116_1_119:
+        unknown_116_1_119:
           white_value: true
-          color: true
-          dimming: true
 
 lovelace:
   mode: storage

@@ -6,3 +6,4 @@ home-assistant*
 .HA_VERSION
 .cloud
 blueprints
+__pycache__
