@@ -1,0 +1,10 @@
+title: Lights
+views:
+  - title: Led
+    badges: []
+    cards:
+      - type: light
+        entity: light.unknown_116_1_119
+      - type: entity
+        entity: light.unknown_116_1_119
+        attribute: rgb_color

@@ -138,7 +138,7 @@ class FibaroLight(FibaroDevice, LightEntity):
             )
 
             if self.state == "off":
-                self.set_level(int(self._brightness))
+                self.set_level(int(self._brightness if self._brightness < 100 else 99)))
             return
 
         if self._reset_color:

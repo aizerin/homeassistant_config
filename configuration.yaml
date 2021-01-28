@@ -11,6 +11,12 @@ homeassistant:
 #     homeassistant.components.fibaro: debug
 #     custom_components.fibaro: debug
 
+homekit:
+  auto_start: false
+  filter:
+    include_entities:
+      - light.unknown_116_1_119
+
 ios:
 
 # Text to speech
@@ -39,12 +45,15 @@ lovelace:
     heater-dashboard:
       mode: yaml
       title: Heating panel
-      icon: mdi:script
       show_in_sidebar: true
       filename: dashboards/heater.yaml
     growbox-dashboard:
       mode: yaml
       title: Growbox
-      icon: mdi:script
       show_in_sidebar: true
       filename: dashboards/growbox.yaml
+    lights-dashboard:
+      mode: yaml
+      title: Lights
+      show_in_sidebar: true
+      filename: dashboards/lights.yaml
