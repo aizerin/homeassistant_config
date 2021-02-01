@@ -31,7 +31,7 @@
 - alias: "Growbox turn on fan interval"
   trigger:
     - platform: time_pattern
-      hours: "/6"
+      hours: "/3"
   action:
     - service: switch.turn_on
       entity_id: switch.growbox_fan
