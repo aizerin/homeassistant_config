@@ -41,8 +41,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
         return
 
     async_add_entities(
-        [FibaroLight(device)
-         for device in hass.data[FIBARO_DEVICES]["light"]], True
+        [FibaroLight(device) for device in hass.data[FIBARO_DEVICES]["light"]], True
     )
 
 
@@ -106,6 +105,7 @@ class FibaroLight(FibaroDevice, LightEntity):
         """Really turn the light on."""
         if self._supported_flags & SUPPORT_BRIGHTNESS:
             target_brightness = kwargs.get(ATTR_BRIGHTNESS)
+
             # No brightness specified, so we either restore it to
             # last brightness or switch it on at maximum level
             if target_brightness is None:
@@ -118,10 +118,9 @@ class FibaroLight(FibaroDevice, LightEntity):
                 # We set it to the target brightness and turn it on
                 self._brightness = scaleto100(target_brightness)
 
-        if (
-            self._supported_flags & SUPPORT_COLOR
-            and (kwargs.get(ATTR_WHITE_VALUE) is not None
-                 or kwargs.get(ATTR_HS_COLOR) is not None)
+        if self._supported_flags & SUPPORT_COLOR and (
+            kwargs.get(ATTR_WHITE_VALUE) is not None
+            or kwargs.get(ATTR_HS_COLOR) is not None
         ):
             if self._reset_color:
                 self._color = (100, 0)
@@ -138,7 +137,7 @@ class FibaroLight(FibaroDevice, LightEntity):
             )
 
             if self.state == "off":
-                self.set_level(int(self._brightness if self._brightness < 100 else 99)))
+                self.set_level(min(int(self._brightness), 99))
             return
 
         if self._reset_color:
@@ -146,8 +145,7 @@ class FibaroLight(FibaroDevice, LightEntity):
             self.call_set_color(bri255, bri255, bri255, bri255)
 
         if self._supported_flags & SUPPORT_BRIGHTNESS:
-            self.set_level(
-                int(self._brightness if self._brightness < 100 else 99))
+            self.set_level(min(int(self._brightness), 99))
             return
 
         # The simplest case is left for last. No dimming, just switch on
