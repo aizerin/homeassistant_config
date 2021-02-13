@@ -32,7 +32,7 @@ switch: !include_dir_merge_list switches/
 
 fibaro:
   gateways:
-    - url: http://192.168.0.100/api/
+    - url: http://192.168.0.102/api/
       username: !secret fibaro_user
       password: !secret fibaro_password
       device_config:
